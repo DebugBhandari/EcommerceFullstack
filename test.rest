@@ -1,0 +1,45 @@
+
+GET http://localhost:5000/api/v1/product
+
+###
+
+POST http://localhost:5000/api/v1/product/
+Content-Type: application/json
+
+{
+  "name": "Just",
+  "imageUrl": "https://",
+  "brand": "nike",
+  "category": "shirt",
+  "description": "normal male t -shirt",
+  "price": 120,
+  "countInStock": 30
+}
+
+###
+
+POST http://localhost:5000/api/v1/user/
+Content-Type: application/json
+
+{
+    "method": "google",
+    "google": {
+      "name": "Deepak Bhandari",
+      "email": "deepbhforever@gmail.com",
+      "id":"60411207e6e5640705fd7815"
+    }
+    
+}
+###
+
+DELETE http://localhost:5000/api/v1/user/60411207e6e5640705fd7815
+###
+
+POST http://localhost:5000/api/v1/google/login
+
+
+Content-type: application/x-www-form-urlencoded	
+grant_type=client_credentials	
+&client_id={{ clientId }}	
+&client_secret= {{ clientSecret }}	
+&scope={{ scope }}
