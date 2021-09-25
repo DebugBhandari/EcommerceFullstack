@@ -1,4 +1,4 @@
-import errorHandler from 'errorhandler'
+
 import mongoose from 'mongoose'
 
 import app from './app'
@@ -28,7 +28,5 @@ mongoose
     )
     process.exit(1)
   })
-/**
- * Error Handler. Provides full stack - remove for production
- */
-app.use(errorHandler())
+
+

@@ -8,7 +8,7 @@ if (fs.existsSync('.env')) {
   dotenv.config({ path: '.env' })
 } else {
   logger.debug('Using .env file to supply config environment variables')
-  dotenv.config({ path: '.env' }) // you can delete this after you create your own .env file!
+  dotenv.config({ path: '.env' }) 
 }
 export const ENVIRONMENT = process.env.NODE_ENV
 const prod = ENVIRONMENT === 'production' // Anything else is treated as 'dev'

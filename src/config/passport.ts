@@ -2,7 +2,7 @@ import { findOrCreate } from './../services/auth'
 import passport from 'passport'
 import passportLocal from 'passport-local'
 import passportFacebook from 'passport-facebook'
-import googleStrategy from 'passport-google-id-token'
+const googleStrategy = require('passport-google-id-token')
 
 const LocalStrategy = passportLocal.Strategy
 const FacebookStrategy = passportFacebook.Strategy
