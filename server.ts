@@ -1,8 +1,8 @@
 
 import mongoose from 'mongoose'
 
-import app from './app'
-import { MONGODB_URI, SESSION_SECRET } from './util/secrets'
+import app from './src/app'
+import { MONGODB_URI, SESSION_SECRET } from './src/util/secrets'
 
 const mongoUrl = MONGODB_URI
 mongoose
