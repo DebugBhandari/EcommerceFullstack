@@ -9,7 +9,7 @@
   "author": "Bowden Kelly",
   "license": "MIT",
   "scripts": {
-    "start": "npm run serve",
+    "start": "node dist/server.js",
     "build": "npm run build-ts && npm run lint && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
@@ -24,8 +24,10 @@
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
     "postinstall": "tsc",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
+  "engines": { "node": "14.17.5" },
   "dependencies": {
     "@types/cors": "^2.8.10",
     "@types/express-session": "^1.17.3",
@@ -122,4 +124,5 @@
   "jest": {
     "testEnvironment": "node"
   }
+  
 }
