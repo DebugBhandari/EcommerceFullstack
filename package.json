@@ -9,7 +9,7 @@
   "author": "Bowden Kelly",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "npm run serve",
     "build": "npm run build-ts && npm run lint && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
@@ -23,12 +23,12 @@
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
-    "postinstall": "tsc && mv -i -v client/public dist/ && rm -v -rf clienr/src",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main"
+    "postinstall": "tsc",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build",
+    "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm run watch\""
   },
-  "engines": { "node": "14.17.5" },
   "dependencies": {
-    "@types/cors": "^2.8.10",
     "@types/express-session": "^1.17.3",
     "@types/jsonwebtoken": "^8.3.7",
     "@types/multer": "^1.4.5",
@@ -74,6 +74,7 @@
     "@types/chai": "^4.2.9",
     "@types/compression": "^1.7.0",
     "@types/concurrently": "^4.1.1",
+    "@types/cors": "^2.8.12",
     "@types/errorhandler": "^0.0.32",
     "@types/eslint": "^6.1.8",
     "@types/express": "^4.17.2",
@@ -123,5 +124,4 @@
   "jest": {
     "testEnvironment": "node"
   }
-  
 }

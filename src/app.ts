@@ -32,12 +32,6 @@ app.use(express.json()) // => req.body
 app.set('port', process.env.PORT || 3000)
 app.use(cors())
 
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'));
-  app.get('*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build','index.html'))
-  })
-}
 // Use common 3rd-party middlewares
 app.use(compression())
 app.use(bodyParser.json())
@@ -69,6 +63,11 @@ app.use('/api/v1/order', orderRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 
-
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
+  app.get('*',(req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build','index.html'))
+  })
+}
 
 export default app
