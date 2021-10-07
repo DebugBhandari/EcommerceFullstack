@@ -15,8 +15,8 @@ export const ENVIRONMENT = process.env.NODE_ENV
 const prod = ENVIRONMENT === 'production' // Anything else is treated as 'dev'
 
 export const SESSION_SECRET = process.env['SESSION_SECRET'] as string
-export const JWT_SECRET = "ashdfjhasdlkjfhalksdjhflak"
-export const MONGODB_URI = "mongodb+srv://deepak:deepak@cluster0.e5jfp.mongodb.net/IntegrifyFull?retryWrites=true&w=majority"
+export const JWT_SECRET = process.env['JWT_SECRET'] as string
+export const MONGODB_URI = process.env['MONGODB_URI'] as string
 
 if (!SESSION_SECRET || !JWT_SECRET) {
   logger.error(
