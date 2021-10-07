@@ -13,7 +13,6 @@ RUN apk add --no-cache --virtual .gyp \
     && npm install \
     && apk del .gyp
 
-ENV PORT=5000
 ENV NODE_ENV='production'
-EXPOSE 5000
+
 CMD ["npm", "run", "docker-build-webapp"] 
