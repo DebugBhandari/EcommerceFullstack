@@ -29,7 +29,7 @@ const app = express()
 app.use(express.json()) // => req.body
 
 // Express configuration
-app.set('port', process.env.PORT || 5000)
+app.set('port', (process.env.PORT || 5000))
 app.use(cors())
 
 // Use common 3rd-party middlewares
