@@ -13,6 +13,8 @@ RUN apk add --no-cache --virtual .gyp \
     && npm install \
     && apk del .gyp
 
-ENV NODE_ENV='production'
+ENV NODE_ENV production
 
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi ["npm", "run", "docker-build-webapp"] 
+EXPOSE 4000
+
+CMD ["npm", "run", "docker-build-webapp"] 
