@@ -24,7 +24,7 @@
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build",
-    "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm run watch\""
+    "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm --optimize_for_size --max_old_space_size=460 run watch\""
   },
   "dependencies": {
     "@types/express-session": "^1.17.3",
@@ -122,5 +122,5 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "engines": {"node": "12.x","npm": "6.x" }
+  "engines": {"node": "14.x","npm": "7.x" }
 }
