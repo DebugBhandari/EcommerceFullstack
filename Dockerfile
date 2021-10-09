@@ -15,6 +15,4 @@ RUN apk add --no-cache --virtual .gyp \
 
 ENV NODE_ENV production
 
-EXPOSE 4000
-
-CMD ["npm", "run", "docker-build-webapp"] 
+CMD ["npm", "run", "docker-build-webapp"] --bind 0.0.0.0:$PORT

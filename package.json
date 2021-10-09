@@ -23,7 +23,6 @@
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
-    "postinstall": "tsc",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build",
     "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm run watch\""
   },
@@ -55,7 +54,7 @@
     "mongoose": "^5.11.15",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.3",
-    "npm": "^7.24.1",
+    "npm": "^7.8.0",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-id-token": "^0.4.7",
