@@ -14,5 +14,5 @@
       "*": ["node_modules/*", "src/types/*"]
     }
   },
-  "include": ["src/**/*", "src/server.ts"]
+  "include": ["src/**/*", "src/server.ts", "ecosystem.config.js"]
 }

@@ -9,7 +9,8 @@ const FacebookStrategy = passportFacebook.Strategy
 
 export const google = new googleStrategy(
   {
-    clientId: "701388926312-pd0te09anv6p15h6q8soj9uk9h7tb1e0.apps.googleusercontent.com",
+    clientId: '701388926312-pd0te09anv6p15h6q8soj9uk9h7tb1e0.apps.googleusercontent.com',
+    proxy: true
   },
   async (parsedToken: any, googleId: any, done: any) => {
     await findOrCreate(parsedToken, googleId, done)

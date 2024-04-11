@@ -1,27 +1,28 @@
-import { generateToken, isAuth } from './services/auth'
-import { JWT_SECRET } from './util/secrets'
-import JWT from 'jsonwebtoken'
-import express, { Request, Response, NextFunction } from 'express'
-import compression from 'compression'
-import session from 'express-session'
-import bodyParser from 'body-parser'
-import lusca from 'lusca'
-import flash from 'express-flash'
-import path from 'path'
-import mongoose from 'mongoose'
-import passport from 'passport'
-import dotenv from 'dotenv'
-//const pool = require('./db')
+import { generateToken, isAuth } from './services/auth';
+//import { JWT_SECRET } from './util/secrets';
+//import JWT from 'jsonwebtoken';
+import express, { Request, Response, NextFunction } from 'express';
+import compression from 'compression';
+//import session from 'express-session';
+import bodyParser from 'body-parser';
+import lusca from 'lusca';
+//import flash from 'express-flash';
+import path from 'path';
+//import mongoose from 'mongoose';
+import passport from 'passport';
+import dotenv from 'dotenv';
+//const pool = require('./db');
 
-import productRouter from './routers/product'
-import userRouter from './routers/user'
-import orderRouter from './routers/order'
-import apiErrorHandler from './middlewares/apiErrorHandler'
-import apiContentType from './middlewares/apiContentType'
-import { google } from './config/passport'
-import cors from 'cors'
-import bcrypt from 'bcrypt-nodejs'
-import uploadImage from './routers/uploadImage'
+import productRouter from './routers/product';
+import userRouter from './routers/user';
+import orderRouter from './routers/order';
+import apiErrorHandler from './middlewares/apiErrorHandler';
+//import apiContentType from './middlewares/apiContentType';
+import { google } from './config/passport';
+import cors from 'cors';
+//import bcrypt from 'bcrypt-nodejs'
+//import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
+
 
 dotenv.config({ path: '.env' })
 const app = express()
@@ -29,7 +30,7 @@ const app = express()
 app.use(express.json()) // => req.body
 
 // Express configuration
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 3001))
 app.use(cors())
 
 // Use common 3rd-party middlewares
@@ -55,16 +56,17 @@ app.post(
 )
 
 // Use movie router
-app.use('/api/uploads', uploadImage)
 app.use('/api/v1/product', productRouter)
 app.use('/api/v1/user', userRouter)
 app.use('/api/v1/order', orderRouter)
 
+//app.use('/google/login', createProxyMiddleware({ target: 'http://localhost:5000/google/login', changeOrigin: true }))
+
 // Custom API error handler
 app.use(apiErrorHandler)
 
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'));
+if(process.env.NODE_ENV || 'development'){
+  app.use(express.static('client/build'))
   app.get('*',(req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build','index.html'))
   })

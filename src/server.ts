@@ -1,8 +1,10 @@
 
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 import app from './app'
-import { MONGODB_URI, SESSION_SECRET } from './util/secrets'
+import { MONGODB_URI } from './util/secrets'
+
+const baseUrl = process.env.BASE_URL || 'http//localhost:'
 
 const mongoUrl = MONGODB_URI
 mongoose
@@ -16,9 +18,11 @@ mongoose
     app.listen(app.get('port'), () => {
       
       console.log(
-        '  App is running at http://localhost:%d in %s mode',
+        '  App is running at %s%d in %s mode',
+        baseUrl,
         app.get('port'),
-        app.get('env')
+        app.get('env'),
+       
       )
       console.log('  Press CTRL-C to stop\n')
     })

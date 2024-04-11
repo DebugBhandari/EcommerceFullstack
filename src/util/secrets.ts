@@ -8,14 +8,14 @@ if (fs.existsSync('.env')) {
   logger.debug('Using .env file to supply config environment variables')
   dotenv.config({ path: '.env' })
 } else {
-  logger.debug('Using .env file to supply config environment variables')
+  logger.debug('Supplying config environment variables on build')
   dotenv.config({ path: '.env' }) 
 }
 export const ENVIRONMENT = process.env.NODE_ENV
 const prod = ENVIRONMENT === 'production' // Anything else is treated as 'dev'
 
 export const SESSION_SECRET = process.env['SESSION_SECRET'] as string
-export const JWT_SECRET = process.env['JWT_SECRET'] as string
+export const JWT_SECRET =  process.env['JWT_SECRET'] as string
 export const MONGODB_URI = process.env['MONGODB_URI'] as string
 
 if (!SESSION_SECRET || !JWT_SECRET) {
